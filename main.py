@@ -18,3 +18,7 @@ class TwoLayerNet:
         a2 = np.dot(z1, self.params['W2']) + self.params['b2']
         y = softmax(a2)
         return y
+
+    def loss(self, x, t):
+        y = self.predict(x)
+        return cross_entropy_error(y, t)
