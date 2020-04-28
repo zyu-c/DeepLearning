@@ -6,7 +6,17 @@ class MulLayer:
     def forward(self, x, y):
         self.x = x
         self.y = y
-        return x + y
+        return x * y
 
     def backward(self, dout):
         return dout * self.y, dout * self.x
+
+class AddLayer:
+    def __init__(self):
+        pass
+
+    def forward(self, x, y):
+        return x + y
+
+    def backward(self, dout):
+        return dout, dout
