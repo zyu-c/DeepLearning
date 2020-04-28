@@ -28,3 +28,12 @@ class TwoLayerNet:
         y = np.argmax(y, axis = 1)
         t = np.argmax(t, axis = 1)
         return np.sum(y == t) / float(x.shape[0])
+
+    def numerical_gradient(self, x, t):
+        grads = {}
+        grads['W1'] = numerical_gradient(self.predict(x), self.params['W1'])
+        grads['b1'] = numerical_gradient(self.predict(x), self.params['b1'])
+        grads['W2'] = numerical_gradient(self.predict(x), self.params['W2'])
+        grads['b2'] = numerical_gradient(self.predict(x), self.params['b2'])
+
+        return grads
